@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateKeluargaKaryawanTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('keluarga_karyawan', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('karyawan_id')->nullable;
+            $table->string('nama');
+            $table->string('hubungan');
+            $table->date('tanggal_lahir')->nullable();
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+            $table->string('pekerjaan')->nullable();
+            $table->timestamps();
+
+            $table->foreign('karyawan_id')->references('id')->on('karyawan')->onDelete('cascade');
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('keluarga_karyawan');
+    }
+}
+
