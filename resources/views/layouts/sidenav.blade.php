@@ -193,20 +193,20 @@
                         <div class="mt-1 small text-muted">UI Designer</div>
                     </div>
                 </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                {{-- <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <a href="#" class="dropdown-item">Status</a>
                     <a href="{{ asset('') }}./template/profile.html" class="dropdown-item">Profile</a>
                     <a href="#" class="dropdown-item">Feedback</a>
                     <div class="dropdown-divider"></div>
                     <a href="{{ asset('') }}./template/settings.html" class="dropdown-item">Settings</a>
                     <a href="{{ asset('') }}./template/sign-in.html" class="dropdown-item">Logout</a>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="collapse navbar-collapse" id="sidebar-menu">
             <ul class="navbar-nav pt-lg-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">
+                    <a class="nav-link" href="/">
                         <span
                             class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -341,6 +341,24 @@
                                 </span>
                             </a>
                         </li>
+                         {{-- <li class="nav-item">
+                            <a class="nav-link" href="{{ route('keluarga-karyawan.index') }}">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-circle" width="24"
+                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                        <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                        <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">
+                                    Data Keluarga
+                                </span>
+                            </a>
+                        </li> --}}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
                                 data-bs-auto-close="false" role="button" aria-expanded="false">
@@ -400,7 +418,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </li>
                     @endif

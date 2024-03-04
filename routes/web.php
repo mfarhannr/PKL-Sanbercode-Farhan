@@ -39,12 +39,13 @@ Route::group(
         Route::resource('pengalaman', PengalamanController::class);
         Route::resource('pelatihan', PelatihanController::class);
         Route::resource('sertifikasi-keahlian', SertifikasiKeahlianController::class);
-        
+        Route::resource('keluarga-karyawan', KeluargaKaryawanController::class);
+        Route::post('/profile', [KaryawanController::class, 'index']);
+
         Route::middleware(['auth', 'cekRole:admin'])->group(function () {
             Route::resource('accounts', UserController::class);
             Route::resource('karyawan', KaryawanController::class);
             Route::resource('gaji', GajiController::class);
-            Route::resource('keluarga-karyawan', KeluargaKaryawanController::class);
         });
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     }

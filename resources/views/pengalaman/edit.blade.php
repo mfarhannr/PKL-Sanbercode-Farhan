@@ -23,10 +23,14 @@
                                     <input type="text" name="perusahaan" class="form-control"
                                         value="{{ $pengalaman->perusahaan }}">
                                 </div>
-                                <div class="form-group mb-3">
+                                {{-- <div class="form-group mb-3">
                                     <label class="form-label">Deskripsi</label>
                                     <input type="text" name="deskripsi" class="form-control "
                                         value="{{ $pengalaman->deskripsi }}">
+                                </div> --}}
+                                 <div class="form-group mb-3">
+                                    <label class="form-label">Deskripsi</label>
+                                    <textarea class="form-control" name="deskripsi" aria-label="With textarea">{{ $pengalaman->deskripsi }}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-5">

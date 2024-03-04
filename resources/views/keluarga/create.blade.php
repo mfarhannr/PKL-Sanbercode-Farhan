@@ -12,14 +12,19 @@
                         @csrf
                         <div class="row px-4">
                             <div class="col-md-6 mb-3">
-                                <div class="form-group my-3">
-                                    <label for="namakeluarga" class="form-label">Pilih Karyawan</label>
-                                    <select name="id_karyawan" class="form-control">
-                                        @foreach ($karyawan as $karyawanData)
-                                            <option value="{{ $karyawanData->id }}">{{ $karyawanData->nama }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                @if (Auth::check())
+                                    @if (Auth::user()->role == 'admin')
+                                        <div class="form-group my-3">
+                                            <label for="namakeluarga" class="form-label">Pilih Karyawan</label>
+                                            <select name="karyawan_id" class="form-control">
+                                                @foreach ($karyawan as $karyawanData)
+                                                    <option value="{{ $karyawanData->id }}">{{ $karyawanData->nama }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
+                                @endif
                                 <div class="form-group mb-3">
                                     <label for="namakeluarga" class="form-label">Nama</label>
                                     <input type="text" name="nama" class="form-control" id="namakeluarga">

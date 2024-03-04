@@ -10,7 +10,9 @@ class CreateKeluargaKaryawanTable extends Migration
     {
         Schema::create('keluarga_karyawan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_karyawan');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('karyawan_id')->nullable;
             $table->string('nama');
             $table->string('hubungan');
             $table->date('tanggal_lahir')->nullable();
@@ -18,7 +20,7 @@ class CreateKeluargaKaryawanTable extends Migration
             $table->string('pekerjaan')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_karyawan')->references('id')->on('karyawan')->onDelete('cascade');
+            $table->foreign('karyawan_id')->references('id')->on('karyawan')->onDelete('cascade');
         });
     }
 

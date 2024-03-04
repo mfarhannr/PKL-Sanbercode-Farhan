@@ -65,6 +65,13 @@ class KaryawanController extends Controller
         return view('karyawan.edit', compact('karyawan'));
     }
 
+    public function UpdateProfile($id)
+    {
+        $karyawan = DB::table('karyawan')->where('id', $id)->first();
+
+        return view('karyawan.edit', compact('karyawan'));
+    }
+
     public function update(Request $request, $id)
     {
         // Validasi input

@@ -19,6 +19,8 @@ class UserController extends Controller
         return view('accounts.create');
     }
 
+    
+
     public function store(Request $request)
     {
         $data = $request->only(['name', 'email', 'password', 'role']);

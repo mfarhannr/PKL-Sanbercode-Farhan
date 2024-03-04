@@ -36,6 +36,12 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        @if (Auth::check())
+                                            @if (Auth::user()->role == 'admin')
+                                                <th>ID AKun</th>
+                                                <th>Pilih Karyawan</th>
+                                            @endif
+                                        @endif
                                         <th>Nama</th>
                                         <th>hubungan</th>
                                         <th>Jenis Kelamin</th>
@@ -55,6 +61,20 @@
                                                     <div class="font-weight-medium">{{ $i }}</div>
                                                 </div>
                                             </td>
+                                            @if (Auth::check())
+                                                @if (Auth::user()->role == 'admin')
+                                                    <td data-label="Name">
+                                                        <div class="d-flex py-1 align-items-center">
+                                                            <div class="font-weight-medium">{{ $item->user_id }}</div>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Name">
+                                                        <div class="d-flex py-1 align-items-center">
+                                                            <div class="font-weight-medium">{{ $item->nama_karyawan }}</div>
+                                                        </div>
+                                                    </td>
+                                                @endif
+                                            @endif
                                             <td data-label="Name">
                                                 <div class="d-flex py-1 align-items-center">
                                                     <div class="font-weight-medium">{{ $item->nama }}</div>
@@ -73,11 +93,6 @@
                                             <td data-label="Name">
                                                 <div class="d-flex py-1 align-items-center">
                                                     <div class="font-weight-medium">{{ $item->jenis_kelamin }}</div>
-                                                </div>
-                                            </td>
-                                            <td data-label="Name">
-                                                <div class="d-flex py-1 align-items-center">
-                                                    <div class="font-weight-medium">{{ $item->tanggal_lahir }}</div>
                                                 </div>
                                             </td>
                                             <td data-label="Name">

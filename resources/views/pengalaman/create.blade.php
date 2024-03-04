@@ -18,25 +18,26 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">Perusahaan</label>
-                                    <input type="text" name="perusahaan" class="form-control" >
+                                    <input type="text" name="perusahaan" class="form-control">
                                 </div>
-                                <div class="form-group my-3">
+                                {{-- <div class="form-group my-3">
                                     <label class="form-label">Deskripsi</label>
-                                    <input type="text" name="deskripsi" class="form-control"
-                                        >
+                                    <input type="text" name="deskripsi" class="form-control">
+                                </div> --}}
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Deskripsi</label>
+                                    <textarea class="form-control" name="deskripsi" aria-label="With textarea"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-5">
                                 <div class="form-group my-3">
                                     <label class="form-label">Tanggal Mulai</label>
-                                    <input type="date" name="tanggal_mulai" class="form-control"
-                                        >
+                                    <input type="date" name="tanggal_mulai" class="form-control">
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label class="form-label">Tanggal Selesai</label>
-                                    <input type="date" name="tanggal_selesai" class="form-control"
-                                        >
+                                    <input type="date" name="tanggal_selesai" class="form-control">
                                 </div>
                                 <div class="text-end">
                                     <a href="/pengalaman" class="btn btn-secondary">Cancel</a>

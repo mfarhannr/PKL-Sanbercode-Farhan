@@ -13,38 +13,50 @@
                         @method('PUT') <!-- Menambahkan metode PUT untuk operasi update -->
                         <div class="row px-4">
                             <div class="col-md-6 mb-3">
-                                <div class="form-group my-3">
-                                    <label for="namakeluarga" class="form-label">Pilih Karyawan</label>
-                                    <select name="id_karyawan" class="form-control">
-                                        @foreach ($karyawan as $karyawanData)
-                                            <option value="{{ $karyawanData->id }}" {{ $karyawanData->id == $keluarga->id_karyawan ? 'selected' : '' }}>
-                                                {{ $karyawanData->nama }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                @if (Auth::check())
+                                    @if (Auth::user()->role == 'admin')
+                                        <div class="form-group my-3">
+                                            <label for="namakeluarga" class="form-label">Pilih Karyawan</label>
+                                            <select name="karyawan_id" class="form-control">
+                                                @foreach ($karyawan as $karyawanData)
+                                                    <option value="{{ $karyawanData->id }}"
+                                                        {{ $karyawanData->id == $keluarga->karyawan_id ? 'selected' : '' }}>
+                                                        {{ $karyawanData->nama }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
+                                @endif
                                 <div class="form-group mb-3">
                                     <label for="namakeluarga" class="form-label">Nama</label>
-                                    <input type="text" name="nama" class="form-control" id="namakeluarga" value="{{ $keluarga->nama }}">
+                                    <input type="text" name="nama" class="form-control" id="namakeluarga"
+                                        value="{{ $keluarga->nama }}">
                                     @error('nama')
                                         <p class='text-danger mb-0 text-xs pt-1'> {{ $message }} </p>
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">Hubungan</label>
-                                    <input type="text" name="hubungan" class="form-control" placeholder="isi nik..." value="{{ $keluarga->hubungan }}">
+                                    <input type="text" name="hubungan" class="form-control" placeholder="isi nik..."
+                                        value="{{ $keluarga->hubungan }}">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-5">
                                 <div class="form-group my-3">
                                     <label class="form-label">Tanggal lahir</label>
-                                    <input type="date" name="tanggal_lahir" class="form-control" placeholder="tanggal lahir..." value="{{ $keluarga->tanggal_lahir }}">
+                                    <input type="date" name="tanggal_lahir" class="form-control"
+                                        placeholder="tanggal lahir..." value="{{ $keluarga->tanggal_lahir }}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="kelaminSelect" class="form-label"> Jenis kelamin</label>
                                     <select class="form-select" name="jenis_kelamin" id="kelaminSelect">
-                                        <option value="Laki-laki" {{ $keluarga->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki - laki</option>
-                                        <option value="Perempuan" {{ $keluarga->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                                        <option value="Laki-laki"
+                                            {{ $keluarga->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki - laki
+                                        </option>
+                                        <option value="Perempuan"
+                                            {{ $keluarga->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan
+                                        </option>
                                     </select>
                                     @error('jenis_kelamin')
                                         <p class='text-danger mb-0 text-xs pt-1'> {{ $message }} </p>
@@ -52,7 +64,8 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">Pekerjaan</label>
-                                    <input type="text" name="pekerjaan" class="form-control" placeholder="asal sekolah..." value="{{ $keluarga->pekerjaan }}">
+                                    <input type="text" name="pekerjaan" class="form-control"
+                                        placeholder="asal sekolah..." value="{{ $keluarga->pekerjaan }}">
                                 </div>
                                 <div class="text-end">
                                     <a href="/keluarga" class="btn btn-secondary">Cancel</a>
