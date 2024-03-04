@@ -21,15 +21,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
-
-
-Route::get('/karyawan/profile', [KaryawanController::class, 'getKaryawanProfile']);
-Route::get('/karyawan', [KaryawanController::class, 'getKaryawanList']);
-Route::get('/karyawan/{nip}', [KaryawanController::class, 'getKaryawanDetail']);
-Route::apiResource('gaji', GajiAPIController::class);
-
+Route::controller(LoginRegisterController::class)->group(function () {
+    Route::post('/register', 'register');
+    Route::post('/login', 'login');
+});
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/karyawan/profile', [KaryawanController::class, 'getKaryawanProfile']);
+    Route::get('/karyawan', [KaryawanController::class, 'getKaryawanList']);
+    Route::get('/karyawan/{nip}', [KaryawanController::class, 'getKaryawanDetail']);
+    Route::apiResource('gaji', GajiAPIController::class);
+});
 

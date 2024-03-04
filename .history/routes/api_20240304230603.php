@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\API\GajiAPIController;
 
 /*
@@ -21,15 +21,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::controller(LoginController::class)->group(function () {
+    Route::post('/register', 'register');
+    Route::post('/login', 'login');
+});
 
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
-
-
-Route::get('/karyawan/profile', [KaryawanController::class, 'getKaryawanProfile']);
-Route::get('/karyawan', [KaryawanController::class, 'getKaryawanList']);
-Route::get('/karyawan/{nip}', [KaryawanController::class, 'getKaryawanDetail']);
-Route::apiResource('gaji', GajiAPIController::class);
-
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/karyawan/profile', [KaryawanController::class, 'getKaryawanProfile']);
+    Route::get('/karyawan', [KaryawanController::class, 'getKaryawanList']);
+    Route::get('/karyawan/{nip}', [KaryawanController::class, 'getKaryawanDetail']);
+    Route::apiResource('gaji', GajiAPIController::class);
+});
 

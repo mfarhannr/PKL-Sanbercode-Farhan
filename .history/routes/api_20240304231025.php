@@ -27,9 +27,9 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
 
 
-Route::get('/karyawan/profile', [KaryawanController::class, 'getKaryawanProfile']);
-Route::get('/karyawan', [KaryawanController::class, 'getKaryawanList']);
-Route::get('/karyawan/{nip}', [KaryawanController::class, 'getKaryawanDetail']);
-Route::apiResource('gaji', GajiAPIController::class);
+    Route::get('/karyawan/profile', [KaryawanController::class, 'getKaryawanProfile']);
+    Route::get('/karyawan', [KaryawanController::class, 'getKaryawanList']);
+    Route::get('/karyawan/{nip}', [KaryawanController::class, 'getKaryawanDetail']);
+    Route::apiResource('gaji', GajiAPIController::class);
 
 
