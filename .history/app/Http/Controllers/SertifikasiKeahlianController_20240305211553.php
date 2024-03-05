@@ -88,6 +88,7 @@ class SertifikasiKeahlianController extends Controller
 
             return redirect('/sertifikasi-keahlian')->with('success', 'Sertifikasi Keahlian berhasil diupdate');
         } catch (\Exception $e) {
+            // Jika terjadi kesalahan, hapus file sertifikat yang sudah diunggah
             if (isset($sertifikatPath) && Storage::exists($sertifikatPath)) {
                 Storage::delete($sertifikatPath);
             }

@@ -118,7 +118,10 @@
                             </div>
                             <div class="card-footer bg-transparent mt-auto">
                                 <div class="btn-list justify-content-end">
-                                    <a href="{{ route('karyawan.index') }}" class="btn btn-primary"> Back</a>
+                                    
+                                    <button type="submit" class="btn btn-primary" href="{{ route('karyawan.index') }}">
+                                        Back
+                                    </button>
                                 </div>
                             </div>
                         </div>

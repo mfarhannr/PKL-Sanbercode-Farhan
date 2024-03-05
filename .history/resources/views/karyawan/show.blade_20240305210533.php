@@ -21,19 +21,17 @@
                         <div class="card p-0">
                             <div class="card-body">
                                 <div class="card shadow-none border text-center">
-                                    <label class="form-label border-dashed cursor-pointer" id="label"
-                                        style="border-radius: 10px;" for="imageFile">
-                                        Foto
-                                        @if ($karyawan->foto)
-                                            <img class="img-preview img-fluid mb-2 mx-auto"
-                                                src="{{ asset('storage/' . $karyawan->foto) }}" alt="Foto Karyawan">
-                                        @endif
-                                        <img src="{{ asset('img/imageplus.png') }}" id="plusimg" class="img-fluid p-md-3"
-                                            alt="">
-                                        <input accept="image/*" type="file" name="foto" class="form-control mt-3"
-                                            id="imageFile" onchange="previewImage()">
-                                    </label>
-                                </div>
+    <label class="form-label border-dashed cursor-pointer" id="label" style="border-radius:10px;" for="imageFile">
+        Foto
+        @if ($karyawan->foto)
+            <img class="img-preview img-fluid mb-2 mx-auto" src="{{ asset('storage/' . $karyawan->foto) }}"
+                alt="Foto Karyawan">
+        @endif
+        <img src="{{ asset('img/imageplus.png') }}" id="plusimg" class="img-fluid p-md-3" alt="">
+        <input accept="image/*" type="file" name="foto" class="form-control mt-3" id="imageFile" onchange="previewImage()">
+    </label>
+</div>
+
 
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nama Akun</label>
@@ -43,16 +41,17 @@
                                 <div class="mb-3">
                                     <label for="email" class="form-label h3">Email</label>
                                     <input type="text" name="email" class="form-control"
-                                        value="{{ old('email', auth()->user()->email) }}">
+                                        value="{{ old('email', auth()->user()->email) }}" >
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label h3">Nama Karyawan</label>
                                     <input type="text" name="nama" class="form-control" value="{{ $karyawan->nama }}"
-                                        Karyawan">
+                                         Karyawan">
                                 </div>
                                 <div class="form-group my-3">
                                     <label class="form-label">NIK</label>
-                                    <input type="number" name="nik" class="form-control" value="{{ $karyawan->nik }}">
+                                    <input type="number" name="nik" class="form-control" 
+                                        value="{{ $karyawan->nik }}">
                                 </div>
                             </div>
                         </div>
@@ -72,12 +71,12 @@
                                 <div class="mb-3">
                                     <label for="kota" class="form-label h3">Tempat lahir</label>
                                     <input type="text" name="tempat_lahir" class="form-control"
-                                        value="{{ $karyawan->tempat_lahir }}">
+                                        value="{{ $karyawan->tempat_lahir }}" >
                                 </div>
                                 <div class="mb-3">
                                     <label for="negara" class="form-label">Tanggal Lahir</label>
                                     <input type="text" name="negara" class="form-control"
-                                        value="{{ $karyawan->tanggal_lahir }}">
+                                        value="{{ $karyawan->tanggal_lahir }}" >
                                 </div>
                                 <div class="mb-3">
                                     <label for="kelaminSelect" class="form-label"> Jenis kelamin</label>
@@ -89,17 +88,17 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">No Telephone</label>
-                                    <input type="number" name="nohp" class="form-control"
+                                    <input type="number" name="nohp" class="form-control" 
                                         value="{{ $karyawan->nohp }}">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">Email</label>
-                                    <input type="text" name="email" class="form-control"
+                                    <input type="text" name="email" class="form-control" 
                                         value="{{ $karyawan->email }}">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">Jabatan</label>
-                                    <input type="text" name="jabatan" class="form-control"
+                                    <input type="text" name="jabatan" class="form-control" 
                                         value="{{ $karyawan->jabatan }}">
                                 </div>
                                 <div class="form-group mb-3">
@@ -112,13 +111,15 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">Tanggal Masuk</label>
-                                    <input type="text" name="tanggal_masuk" class="form-control"
+                                    <input type="text" name="tanggal_masuk" class="form-control" 
                                         value="{{ $karyawan->tanggal_masuk }}">
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent mt-auto">
                                 <div class="btn-list justify-content-end">
-                                    <a href="{{ route('karyawan.index') }}" class="btn btn-primary"> Back</a>
+                                    <button type="submit" class="btn btn-primary" href="{{ route ('karyawan.index')}}">
+                                        Back
+                                    </button>
                                 </div>
                             </div>
                         </div>

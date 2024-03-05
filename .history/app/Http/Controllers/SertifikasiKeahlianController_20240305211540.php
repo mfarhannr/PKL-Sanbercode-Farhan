@@ -62,10 +62,11 @@ class SertifikasiKeahlianController extends Controller
             'lembaga_penerbit' => 'required',
             'tanggal_terbit' => 'required|date',
             'tanggal_expire' => 'required|date|after:tanggal_terbit',
-            'sertifikat' => 'nullable|mimes:pdf|max:2048',
+            'sertifikat' => 'nullable|mimes:pdf|max:2048', // Jika diunggah, hanya menerima file PDF dengan maksimal 2MB
         ]);
 
         try {
+            // Ambil data sertifikasi yang akan diupdate
             $sertifikasi = DB::table('sertifikasi_keahlian')->find($id);
 
             if (!$sertifikasi) {
@@ -79,15 +80,18 @@ class SertifikasiKeahlianController extends Controller
                 'tanggal_expire' => $request->input('tanggal_expire'),
             ];
 
+            // Jika ada file sertifikat baru, upload dan update path
             if ($request->hasFile('sertifikat')) {
                 $sertifikatPath = $request->file('sertifikat')->store('sertifikat');
                 $updateData['sertifikat_path'] = $sertifikatPath;
             }
 
+            // Lakukan update data
             DB::table('sertifikasi_keahlian')->where('id', $id)->update($updateData);
 
             return redirect('/sertifikasi-keahlian')->with('success', 'Sertifikasi Keahlian berhasil diupdate');
         } catch (\Exception $e) {
+            // Jika terjadi kesalahan, hapus file sertifikat yang sudah diunggah
             if (isset($sertifikatPath) && Storage::exists($sertifikatPath)) {
                 Storage::delete($sertifikatPath);
             }

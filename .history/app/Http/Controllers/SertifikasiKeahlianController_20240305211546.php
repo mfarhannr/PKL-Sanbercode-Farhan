@@ -79,15 +79,18 @@ class SertifikasiKeahlianController extends Controller
                 'tanggal_expire' => $request->input('tanggal_expire'),
             ];
 
+            // Jika ada file sertifikat baru, upload dan update path
             if ($request->hasFile('sertifikat')) {
                 $sertifikatPath = $request->file('sertifikat')->store('sertifikat');
                 $updateData['sertifikat_path'] = $sertifikatPath;
             }
 
+            // Lakukan update data
             DB::table('sertifikasi_keahlian')->where('id', $id)->update($updateData);
 
             return redirect('/sertifikasi-keahlian')->with('success', 'Sertifikasi Keahlian berhasil diupdate');
         } catch (\Exception $e) {
+            // Jika terjadi kesalahan, hapus file sertifikat yang sudah diunggah
             if (isset($sertifikatPath) && Storage::exists($sertifikatPath)) {
                 Storage::delete($sertifikatPath);
             }

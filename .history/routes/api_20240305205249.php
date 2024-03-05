@@ -32,3 +32,4 @@ Route::get('/karyawan', [KaryawanController::class, 'getKaryawanList']);
 Route::get('/karyawan/{nip}', [KaryawanController::class, 'getKaryawanDetail']);
 Route::apiResource('gaji', GajiAPIController::class);
 
+

@@ -21,19 +21,17 @@
                         <div class="card p-0">
                             <div class="card-body">
                                 <div class="card shadow-none border text-center">
-                                    <label class="form-label border-dashed cursor-pointer" id="label"
-                                        style="border-radius: 10px;" for="imageFile">
-                                        Foto
-                                        @if ($karyawan->foto)
-                                            <img class="img-preview img-fluid mb-2 mx-auto"
-                                                src="{{ asset('storage/' . $karyawan->foto) }}" alt="Foto Karyawan">
-                                        @endif
-                                        <img src="{{ asset('img/imageplus.png') }}" id="plusimg" class="img-fluid p-md-3"
-                                            alt="">
-                                        <input accept="image/*" type="file" name="foto" class="form-control mt-3"
-                                            id="imageFile" onchange="previewImage()">
-                                    </label>
-                                </div>
+    <label class="form-label border-dashed cursor-pointer" id="label" style="border-radius: 10px;" for="imageFile">
+        Foto
+        @if ($karyawan->foto)
+            <img class="img-preview img-fluid mb-2 mx-auto" src="{{ asset('storage/' . $karyawan->foto) }}"
+                alt="Foto Karyawan">
+        @endif
+        <img src="{{ asset('img/imageplus.png') }}" id="plusimg" class="img-fluid p-md-3" alt="">
+        <input accept="image/*" type="file" name="foto" class="form-control mt-3" id="imageFile"
+            onchange="previewImage()">
+    </label>
+</div>
 
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nama Akun</label>
@@ -118,7 +116,10 @@
                             </div>
                             <div class="card-footer bg-transparent mt-auto">
                                 <div class="btn-list justify-content-end">
-                                    <a href="{{ route('karyawan.index') }}" class="btn btn-primary"> Back</a>
+                                    <button type="submit" class="btn btn-primary"
+                                        href="{{ route('karyawan.index') }}">
+                                        Back
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -145,11 +145,15 @@ class KaryawanController extends Controller
         if ($request->hasFile('foto')) {
             $fotoPath = $request->file('foto')->store('karyawan_foto', 'public');
         } else {
+            // Jika tidak ada file foto yang diunggah, ambil path foto dari database
             $existingFotoPath = DB::table('karyawan')->where('id', $id)->value('foto');
+
+            // Pastikan path foto dari database tidak kosong sebelum menggunakannya
             $fotoPath = $existingFotoPath ? $existingFotoPath : 'default/path/to/default/photo.jpg';
         }
-        DB::table('karyawan')->where(
-            'id',
+
+        // Update data karyawan dengan path foto yang baru atau yang sudah ada
+        DB::table('karyawan')->where('id',
             $id
         )->update([
             'nik' => $request->nik,

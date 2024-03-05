@@ -148,8 +148,9 @@ class KaryawanController extends Controller
             $existingFotoPath = DB::table('karyawan')->where('id', $id)->value('foto');
             $fotoPath = $existingFotoPath ? $existingFotoPath : 'default/path/to/default/photo.jpg';
         }
-        DB::table('karyawan')->where(
-            'id',
+
+        // Update data karyawan dengan path foto yang baru atau yang sudah ada
+        DB::table('karyawan')->where('id',
             $id
         )->update([
             'nik' => $request->nik,
